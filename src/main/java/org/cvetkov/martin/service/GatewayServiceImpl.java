@@ -18,6 +18,7 @@ import org.cvetkov.martin.repository.GatewayJpaRepository;
 import org.cvetkov.martin.utilities.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component
 public class GatewayServiceImpl implements GatewayService{
@@ -46,10 +47,15 @@ public class GatewayServiceImpl implements GatewayService{
 	}
 	
 	public void addGateway(Gateway gateway) {
+		
+		if(StringUtils.isEmpty(gateway.getSerialNumber()) || StringUtils.isEmpty(gateway.getName())){
+			throw new InvalidRequestException();
+		}
 		Gateway existingGateway = gatewayJpaRepository.findBySerialNumber(gateway.getSerialNumber());
 		if (existingGateway != null) {
 			throw new GatewayAlreadyExistsException(gateway.getSerialNumber());
 		}
+
 		if(gateway.getDevices().size() > 10) {
 			throw new TooManyDevicesException(gateway.getSerialNumber());
 		}
@@ -109,6 +115,10 @@ public class GatewayServiceImpl implements GatewayService{
 	}
 	
 	public void addDevice(String gatewaySerialNumber, Device device) {
+		if(StringUtils.isEmpty(device.getVendor())){
+			throw new InvalidRequestException();
+		}
+		
 		Gateway gateway = gatewayJpaRepository.findBySerialNumber(gatewaySerialNumber);
 		if (gateway == null) {
 			throw new GatewayNotFoundException(gatewaySerialNumber);

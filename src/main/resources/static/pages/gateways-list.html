@@ -1,0 +1,27 @@
+<h2>Gateways</h2>        
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Name</th>
+        <th>Ip Address</th>
+        <th>Devices</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="gateway in gateways" ng-model="gateway">
+        <td>{{gateway.serialNumber}}</td>
+        <td>{{gateway.name}}</td>
+        <td>{{gateway.ipAddress}}</td>
+        <td>{{gateway.devices.length}}</td>
+        <td><input type="button" value="See devices" ng-click="goTo(gateway)"/></td>
+        <td><input type="button" value="Delete Gateway" ng-click="deleteGateway(gateway)"/></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="serialNumber" ng-model="serialNumber" placeholder="SerialNumber"/></td>
+        <td><input type="text" name="name" ng-model="name" placeholder="gatewayName"/></td>
+        <td><input type="text" name="ipAddress" ng-model="ipAddress" placeholder="Ip Address"/></td>
+        <td><input type="button" value="Add Gateway" ng-click="addGateway()"/></td>
+      </tr>
+    </tbody>
+  </table>

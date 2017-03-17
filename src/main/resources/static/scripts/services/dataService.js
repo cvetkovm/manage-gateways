@@ -1,0 +1,2 @@
+myApp.service('dataService', function() {
+});

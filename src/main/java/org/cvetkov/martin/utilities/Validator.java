@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.apache.commons.validator.routines.InetAddressValidator;
 import org.cvetkov.martin.model.Device;
+import org.springframework.util.StringUtils;
 
 public class Validator {
 
 	public static boolean isValidStatus(String status) {
-		if(status.equals("online") || status.equals("offline")){
+		if(StringUtils.isEmpty(status)) {
+			return false;
+		} else if(status.equals("online") || status.equals("offline")){
 			return true;
 		}else return false;
 	}
