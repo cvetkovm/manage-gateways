@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="device in gateway.devices">
+		<tr ng-repeat="device in gateway.devices | orderBy:'uid'">
 			<td>{{device.uid}}</td>
 			<td>{{device.vendor}}</td>
 			<td>{{device.dateCreated | date:'MMMM/d/yyyy'}}</td>

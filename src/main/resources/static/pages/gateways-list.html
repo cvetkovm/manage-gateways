@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="gateway in gateways" ng-model="gateway">
+      <tr ng-repeat="gateway in gateways | orderBy:'serialNumber'" ng-model="gateway">
         <td>{{gateway.serialNumber}}</td>
         <td>{{gateway.name}}</td>
         <td>{{gateway.ipAddress}}</td>
