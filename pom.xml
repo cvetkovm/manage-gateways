@@ -4,7 +4,7 @@
 	<groupId>org.cvetkov.martin</groupId>
 	<artifactId>manage-gateways</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<name>manage-gateways</name>
 
 	<parent>
