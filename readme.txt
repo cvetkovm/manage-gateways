@@ -1,2 +1,2 @@
 Please read this file for further instructions.
-New change made in the main branch.
+New change merged from the master and testing branch.
